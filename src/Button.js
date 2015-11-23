@@ -6,6 +6,7 @@ const types = ['button', 'reset', 'submit'];
 
 import bootstrapUtils, { bsStyles, bsSizes, bsClass } from './utils/bootstrapUtils';
 import { Sizes, State, DEFAULT, PRIMARY, LINK } from './styleMaps';
+import mapClassNames from './utils/mapClassNames'
 
 const ButtonStyles = State.values().concat(DEFAULT, PRIMARY, LINK);
 
@@ -53,9 +54,10 @@ let Button = React.createClass({
       ...classes
     };
 
-    if (this.props.navItem) {
-      return this.renderNavItem(classes);
-    }
+    //TODO: Now I don't know what the navItem is for, so ignore it.
+    // if (this.props.navItem) {
+    //   return this.renderNavItem(classes);
+    // }
 
     renderFuncName = this.props.href || this.props.target || this.props.navDropdown ?
       'renderAnchor' : 'renderButton';
