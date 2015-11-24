@@ -1,8 +1,8 @@
 import webpack from 'webpack';
 
-export default function getBaseConfig(options) {
-  const jsLoader = 'babel?cacheDirectory';
+export const jsLoader = 'babel?cacheDirectory';
 
+export default function getBaseConfig(options={}) {
   const baseConfig = {
     entry: undefined,
 

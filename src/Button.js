@@ -55,7 +55,7 @@ let Button = React.createClass({
       ...classes
     };
 
-    //TODO: Now I don't know what the navItem is for, so ignore it.
+    // TODO: Now I don't know what the navItem is for, so ignore it.
     // if (this.props.navItem) {
     //   return this.renderNavItem(classes);
     // }

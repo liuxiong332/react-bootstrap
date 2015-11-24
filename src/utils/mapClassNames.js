@@ -3,7 +3,8 @@
 // This function will map the classNames to the destination class names by styles
 export default function mapClassNames(styles, classNames) {
   let mapObj = {};
-  for(let key in classNames)
+  classNames.keys(classNames).forEach(key => {
     mapObj[styles[key]] = classNames[key];
+  });
   return mapObj;
 }
