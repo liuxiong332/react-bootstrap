@@ -1,7 +1,7 @@
 import _ from 'lodash-compat';
-import getBaseConfig from './base.config';
+import baseConfig from './base.config';
 
-export default _.extend({}, getBaseConfig(), {
+export default _.extend({}, baseConfig, {
   output: {
     pathinfo: true
   },

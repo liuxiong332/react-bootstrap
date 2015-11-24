@@ -2,14 +2,14 @@ var gulp = require('gulp');
 var babel = require('gulp-babel');
 var sass = require('gulp-sass');
 var webpack = require("webpack");
-var gutil = require("gulp-util");
 var eslint = require('gulp-eslint');
-var env = require('gulp-env');
-var Server = require('karma').Server;
-var fs = require('fs');
+var path = require('path');
+var childProcess = require('child_process');
+
 require('babel/register');
 
 gulp.task('build-babel', function() {
+  var fs = require('fs');
   var config = JSON.parse(fs.readFileSync('./.babelrc'));
   return gulp.src('src/**/*.js')
     .pipe(babel(config))
@@ -22,21 +22,33 @@ gulp.task('build-sass', function() {
     .pipe(gulp.dest('./lib/'));
 });
 
-var webpackConfig = require('./webpack/webpack.config.js');
+function getBinPath(name) {
+  if(process.platform === 'win32') name += '.cmd';
+  return path.resolve(__dirname, 'node_modules/.bin/', name);
+}
+
+function runNpmCmd(cmdName, args, options, callback) {
+  if(!Array.isArray(args)) {
+    callback = options;
+    options = args;
+    args = [];
+  }
+  if(typeof options !== 'object') {
+    callback = options;
+    options = {};
+  }
+  options = Object.assign({}, options, {stdio: 'inherit'});
+  var cp = childProcess.spawn(getBinPath(cmdName), args, options);
+  cp.on('close', function() { callback && callback(); });
+  cp.on('error', function(err) { callback && callback(err); });
+}
+
 gulp.task('webpack:build-minimize', function(callback) {
-  webpack(webpackConfig({optimizeMinimize: true}), function(err, stats) {
-    if(err) throw new gutil.PluginError("webpack:build", err);
-		gutil.log("[webpack:build]", stats.toString({colors: true}));
-		callback(err);
-  });
+  runNpmCmd('webpack', ['-p'], callback);
 });
 
 gulp.task('webpack:build', function(callback) {
-  webpack(webpackConfig(), function(err, stats) {
-    if(err) throw new gutil.PluginError("webpack:build", err);
-		gutil.log("[webpack:build]", stats.toString({colors: true}));
-		callback(err);
-  });
+  runNpmCmd('webpack', callback);
 });
 
 gulp.task('dist', ['webpack:build', 'webpack:build-minimize']);
@@ -48,23 +60,15 @@ gulp.task('lint', function() {
     .pipe(eslint.failAfterError());
 });
 
-const karmaConfigPath = __dirname + '/karma.conf.js';
-function startServer(callback) {
-  new Server({
-    configFile: karmaConfigPath,
-    singleRun: true
-  }, callback).start();
-}
-
 gulp.task('test', function(callback) {
-  startServer(callback);
+  runNpmCmd('karma', ['start', '--single-run'], callback);
 });
 
 gulp.task('test-coverage', function(callback) {
-  env({COVERAGE: true});
-  startServer(callback);
+  var options = {env: {'COVERAGE': true}};
+  runNpmCmd('karma', ['start', '--single-run'], options, callback);
 });
 
 gulp.task('test-watch', function(callback) {
-  new Server({configFile:  karmaConfigPath}, callback).start();
+  runNpmCmd('karma', ['start'], callback);
 });
