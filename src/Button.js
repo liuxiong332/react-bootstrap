@@ -6,7 +6,8 @@ const types = ['button', 'reset', 'submit'];
 
 import bootstrapUtils, { bsStyles, bsSizes, bsClass } from './utils/bootstrapUtils';
 import { Sizes, State, DEFAULT, PRIMARY, LINK } from './styleMaps';
-import mapClassNames from './utils/mapClassNames'
+import mapClassNames from './utils/mapClassNames';
+import styles from './styles/bootstrap-button';
 
 const ButtonStyles = State.values().concat(DEFAULT, PRIMARY, LINK);
 
@@ -74,7 +75,7 @@ let Button = React.createClass({
       <Component
         {...this.props}
         href={href}
-        className={classNames(this.props.className, classes)}
+        className={classNames(this.props.className, mapClassNames(styles, classes))}
         role="button">
         {this.props.children}
       </Component>
@@ -88,7 +89,7 @@ let Button = React.createClass({
       <Component
         {...this.props}
         type={this.props.type || 'button'}
-        className={classNames(this.props.className, classes)}>
+        className={classNames(this.props.className, mapClassNames(styles, classes))}>
         {this.props.children}
       </Component>
     );
