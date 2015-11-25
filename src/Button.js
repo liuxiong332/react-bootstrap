@@ -6,7 +6,7 @@ const types = ['button', 'reset', 'submit'];
 
 import bootstrapUtils, { bsStyles, bsSizes, bsClass } from './utils/bootstrapUtils';
 import { Sizes, State, PRIMARY, LINK } from './styleMaps';
-import mapClassNames from './utils/mapClassNames';
+import {mapClassNames} from './utils/classNameUtils';
 import styles from './styles/bootstrap-button';
 
 const ButtonStyles = State.values().concat(PRIMARY, LINK);

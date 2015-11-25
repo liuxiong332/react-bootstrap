@@ -30,8 +30,7 @@ describe('DropdownButton', () => {
     const buttonNode = ReactTestUtils.findRenderedDOMComponentWithTag(instance, 'BUTTON');
 
     buttonNode.tagName.should.equal('BUTTON');
-    buttonNode.className.should.match(/\bbtn[ $]/);
-    buttonNode.className.should.match(/\bbtn-default\b/);
+    buttonNode.className.should.match(/\bbtn\b/);
     buttonNode.className.should.match(/\bdropdown-toggle\b/);
     buttonNode.getAttribute('type').should.equal('button');
     buttonNode.getAttribute('aria-expanded').should.equal('false');

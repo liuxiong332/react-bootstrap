@@ -112,15 +112,6 @@ describe('Button', () => {
     assert.ok(ReactDOM.findDOMNode(instance).className.match(/\bbtn-danger\b/));
   });
 
-  it('Should default to bsStyle="default"', () => {
-    let instance = ReactTestUtils.renderIntoDocument(
-      <Button bsStyle='default'>
-        Title
-      </Button>
-    );
-    assert.equal(instance.props.bsStyle, 'default');
-  });
-
   it('Should be active', () => {
     let instance = ReactTestUtils.renderIntoDocument(
       <Button active>
@@ -130,7 +121,7 @@ describe('Button', () => {
     assert.ok(ReactDOM.findDOMNode(instance).className.match(/\bactive\b/));
   });
 
-  it('Should render an anchor in a list item when in a nav', () => {
+  it.skip('Should render an anchor in a list item when in a nav', () => {
     let instance = ReactTestUtils.renderIntoDocument(
       <Button navItem active>
         Title
