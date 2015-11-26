@@ -75,7 +75,7 @@ let Button = React.createClass({
       <Component
         {...this.props}
         href={href}
-        className={classNames(this.props.className, mapClassNames(styles, classes))}
+        className={classNames(this.props.className, mapClassNames(this.props.styleNames, styles, classes))}
         role="button">
         {this.props.children}
       </Component>
@@ -89,7 +89,7 @@ let Button = React.createClass({
       <Component
         {...this.props}
         type={this.props.type || 'button'}
-        className={classNames(this.props.className, mapClassNames(styles, classes))}>
+        className={classNames(this.props.className, mapClassNames(this.props.styleNames, styles, classes))}>
         {this.props.children}
       </Component>
     );
