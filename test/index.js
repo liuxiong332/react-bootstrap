@@ -3,7 +3,7 @@ var classNameUtils = require('../src/utils/classNameUtils');
 
 beforeEach(() => {
   sinon.stub(console, 'error');
-  sinon.stub(classNameUtils, 'mapClassNames', (styles, classNames) => classNames);
+  sinon.stub(classNameUtils, 'mapClassNames', (classNames) => classNames);
 });
 
 afterEach(function checkNoUnexpectedWarnings() {

@@ -5,11 +5,10 @@ import elementType from 'react-prop-types/lib/elementType';
 const types = ['button', 'reset', 'submit'];
 
 import bootstrapUtils, { bsStyles, bsSizes, bsClass } from './utils/bootstrapUtils';
-import { Sizes, State, PRIMARY, LINK } from './styleMaps';
+import { Sizes, State, DEFAULT, PRIMARY, LINK } from './styleMaps';
 import {mapClassNames} from './utils/classNameUtils';
-import styles from '../styles/button';
 
-const ButtonStyles = State.values().concat(PRIMARY, LINK);
+const ButtonStyles = State.values().concat(DEFAULT, PRIMARY, LINK);
 
 let Button = React.createClass({
 
@@ -55,10 +54,9 @@ let Button = React.createClass({
       ...classes
     };
 
-    // TODO: Now I don't know what the navItem is for, so ignore it.
-    // if (this.props.navItem) {
-    //   return this.renderNavItem(classes);
-    // }
+    if (this.props.navItem) {
+      return this.renderNavItem(classes);
+    }
 
     renderFuncName = this.props.href || this.props.target || this.props.navDropdown ?
       'renderAnchor' : 'renderButton';
@@ -75,7 +73,7 @@ let Button = React.createClass({
       <Component
         {...this.props}
         href={href}
-        className={classNames(this.props.className, mapClassNames(this.props.styleNames, styles, classes))}
+        className={classNames(this.props.className, mapClassNames(classes))}
         role="button">
         {this.props.children}
       </Component>
@@ -89,7 +87,7 @@ let Button = React.createClass({
       <Component
         {...this.props}
         type={this.props.type || 'button'}
-        className={classNames(this.props.className, mapClassNames(this.props.styleNames, styles, classes))}>
+        className={classNames(this.props.className, mapClassNames(classes))}>
         {this.props.children}
       </Component>
     );
@@ -101,7 +99,7 @@ let Button = React.createClass({
     };
 
     return (
-      <li className={classNames(liClasses)}>
+      <li className={classNames(mapClassNames(liClasses))}>
         {this.renderAnchor(classes)}
       </li>
     );
@@ -110,7 +108,7 @@ let Button = React.createClass({
 
 Button.types = types;
 
-export default bsStyles(ButtonStyles,
+export default bsStyles(ButtonStyles, DEFAULT,
   bsSizes([Sizes.LARGE, Sizes.SMALL, Sizes.XSMALL],
     bsClass('btn', Button)
   )

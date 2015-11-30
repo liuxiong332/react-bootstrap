@@ -4,7 +4,6 @@ import bootstrapUtils, { bsClass } from './utils/bootstrapUtils';
 import all from 'react-prop-types/lib/all';
 import Button from './Button';
 import {mapClassNames} from './utils/classNameUtils';
-import styles from './styles/bootstrap-button-group';
 
 const ButtonGroup = React.createClass({
 
@@ -46,7 +45,7 @@ const ButtonGroup = React.createClass({
     return (
       <div
         {...this.props}
-        className={classNames(this.props.className, mapClassNames(this.props.classNames, styles, classes))}>
+        className={classNames(this.props.className, mapClassNames(classes))}>
         {this.props.children}
       </div>
     );
