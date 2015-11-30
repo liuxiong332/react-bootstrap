@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import SafeAnchor from './SafeAnchor';
+import {mapClassNames} from './utils/classNameUtils';
 
 const PageItem = React.createClass({
 
@@ -33,7 +34,7 @@ const PageItem = React.createClass({
     return (
       <li
         {...this.props}
-        className={classNames(this.props.className, classes)}>
+        className={classNames(this.props.className, mapClassNames(classes))}>
         <SafeAnchor
           href={this.props.href}
           title={this.props.title}

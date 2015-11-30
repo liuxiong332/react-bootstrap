@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 import bootstrapUtils, { bsClass } from './utils/bootstrapUtils';
 import ValidComponentChildren from './utils/ValidComponentChildren';
+import {mapClassNames} from './utils/classNameUtils';
 
 const PanelGroup = React.createClass({
 
@@ -35,7 +36,7 @@ const PanelGroup = React.createClass({
     let {className, ...props} = this.props;
     if (this.props.accordion) { props.role = 'tablist'; }
     return (
-      <div {...props} className={classNames(className, classes)} onSelect={null}>
+      <div {...props} className={classNames(className, mapClassNames(classes))} onSelect={null}>
         {ValidComponentChildren.map(props.children, this.renderPanel)}
       </div>
     );

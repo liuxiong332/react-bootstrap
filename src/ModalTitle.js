@@ -1,13 +1,14 @@
 import React from 'react';
 import classNames from 'classnames';
 import tbsUtils, { bsClass } from './utils/bootstrapUtils';
+import {mapClassNames} from './utils/classNameUtils';
 
 class ModalTitle extends React.Component {
   render() {
     return (
       <h4
         {...this.props}
-        className={classNames(this.props.className, tbsUtils.prefix(this.props, 'title'))}>
+        className={classNames(this.props.className, mapClassNames(tbsUtils.prefix(this.props, 'title')))}>
         { this.props.children }
       </h4>
     );

@@ -4,6 +4,7 @@ import bootstrapUtils, { bsClass } from './utils/bootstrapUtils';
 import PaginationButton from './PaginationButton';
 import elementType from 'react-prop-types/lib/elementType';
 import SafeAnchor from './SafeAnchor';
+import {mapClassNames} from './utils/classNameUtils';
 
 const Pagination = React.createClass({
 
@@ -213,7 +214,7 @@ const Pagination = React.createClass({
     return (
       <ul
         {...this.props}
-        className={classNames(this.props.className, bootstrapUtils.getClassSet(this.props))}>
+        className={classNames(this.props.className, mapClassNames(bootstrapUtils.getClassSet(this.props)))}>
         {this.renderFirst()}
         {this.renderPrev()}
         {this.renderPageButtons()}

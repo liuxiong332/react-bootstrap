@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import {mapClassNames} from './utils/classNameUtils';
 
 const Table = React.createClass({
   propTypes: {
@@ -29,13 +30,13 @@ const Table = React.createClass({
       'table-hover': this.props.hover
     };
     let table = (
-      <table {...this.props} className={classNames(this.props.className, classes)}>
+      <table {...this.props} className={classNames(this.props.className, mapClassNames(classes))}>
         {this.props.children}
       </table>
     );
 
     return this.props.responsive ? (
-      <div className="table-responsive">
+      <div className={mapClassNames("table-responsive")}>
         {table}
       </div>
     ) : table;

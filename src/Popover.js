@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import tbsUtils from './utils/bootstrapUtils';
 import isRequiredForA11y from 'react-prop-types/lib/isRequiredForA11y';
+import {mapClassNames} from './utils/classNameUtils';
 
 const Popover = React.createClass({
 
@@ -77,10 +78,10 @@ const Popover = React.createClass({
     };
 
     return (
-      <div role="tooltip" {...this.props} className={classNames(this.props.className, classes)} style={style} title={null}>
-        <div className="arrow" style={arrowStyle} />
+      <div role="tooltip" {...this.props} className={classNames(this.props.className, mapClassNames(classes))} style={style} title={null}>
+        <div className={mapClassNames("arrow")} style={arrowStyle} />
         {this.props.title ? this.renderTitle() : null}
-        <div className={tbsUtils.prefix(this.props, 'content')}>
+        <div className={mapClassNames(tbsUtils.prefix(this.props, 'content'))}>
           {this.props.children}
         </div>
       </div>
@@ -89,7 +90,7 @@ const Popover = React.createClass({
 
   renderTitle() {
     return (
-      <h3 className={tbsUtils.prefix(this.props, 'title')}>
+      <h3 className={mapClassNames(tbsUtils.prefix(this.props, 'title'))}>
         {this.props.title}
       </h3>
     );

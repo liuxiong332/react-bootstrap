@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import bootstrapUtils, { bsStyles, bsClass } from './utils/bootstrapUtils';
 import { State } from './styleMaps';
+import {mapClassNames} from './utils/classNameUtils';
 
 let Alert = React.createClass({
 
@@ -47,7 +48,7 @@ let Alert = React.createClass({
     classes[bootstrapUtils.prefix(this.props, 'dismissable')] = isDismissable;
 
     return (
-      <div {...this.props} role="alert" className={classNames(this.props.className, classes)}>
+      <div {...this.props} role="alert" className={classNames(this.props.className, mapClassNames(classes))}>
         {isDismissable ? this.renderDismissButton() : null}
         {this.props.children}
         {isDismissable ? this.renderSrOnlyDismissButton() : null}

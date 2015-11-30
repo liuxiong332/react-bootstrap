@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 import Button from '../src/Button';
 
-describe.only('Button', () => {
+describe('Button', () => {
   it('Should output a button', () => {
     let instance = ReactTestUtils.renderIntoDocument(
       <Button>

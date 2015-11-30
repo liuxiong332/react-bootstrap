@@ -2,6 +2,7 @@ import React, { cloneElement } from 'react';
 import bootstrapUtils, { bsStyles, bsClass } from './utils/bootstrapUtils';
 import { State } from './styleMaps';
 import classNames from 'classnames';
+import {mapClassNames} from './utils/classNameUtils';
 
 class ListGroupItem extends React.Component {
 
@@ -26,7 +27,7 @@ class ListGroupItem extends React.Component {
   renderLi(classes) {
     return (
       <li
-        {...this.props} className={classNames(this.props.className, classes)}>
+        {...this.props} className={classNames(this.props.className, mapClassNames(classes))}>
         {this.props.header ? this.renderStructuredContent() : this.props.children}
       </li>
     );
@@ -36,7 +37,7 @@ class ListGroupItem extends React.Component {
     return (
       <a
         {...this.props}
-        className={classNames(this.props.className, classes)}
+        className={classNames(this.props.className, mapClassNames(classes))}
       >
         {this.props.header ? this.renderStructuredContent() : this.props.children}
       </a>
@@ -48,7 +49,7 @@ class ListGroupItem extends React.Component {
       <button
         type="button"
         {...this.props}
-        className={classNames(this.props.className, classes)}>
+        className={classNames(this.props.className, mapClassNames(classes))}>
         {this.props.header ? this.renderStructuredContent() : this.props.children}
       </button>
     );
@@ -57,7 +58,7 @@ class ListGroupItem extends React.Component {
   renderSpan(classes) {
     return (
       <span
-        {...this.props} className={classNames(this.props.className, classes)}>
+        {...this.props} className={classNames(this.props.className, mapClassNames(classes))}>
         {this.props.header ? this.renderStructuredContent() : this.props.children}
       </span>
     );
@@ -70,18 +71,18 @@ class ListGroupItem extends React.Component {
     if (React.isValidElement(this.props.header)) {
       header = cloneElement(this.props.header, {
         key: 'header',
-        className: classNames(this.props.header.props.className, headingClass)
+        className: classNames(this.props.header.props.className, mapClassNames(headingClass))
       });
     } else {
       header = (
-        <h4 key="header" className={headingClass}>
+        <h4 key="header" className={mapClassNames(headingClass)}>
           {this.props.header}
         </h4>
       );
     }
 
     let content = (
-      <p key="content" className={bootstrapUtils.prefix(this.props, 'text')}>
+      <p key="content" className={mapClassNames(bootstrapUtils.prefix(this.props, 'text'))}>
         {this.props.children}
       </p>
     );

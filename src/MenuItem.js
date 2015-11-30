@@ -5,6 +5,7 @@ import all from 'react-prop-types/lib/all';
 
 import SafeAnchor from './SafeAnchor';
 import createChainedFunction from './utils/createChainedFunction';
+import {mapClassNames} from './utils/classNameUtils';
 
 class MenuItem extends React.Component {
   constructor(props) {
@@ -31,12 +32,12 @@ class MenuItem extends React.Component {
     let headerClass = bootstrapUtils.prefix(this.props, 'header');
 
     if (this.props.divider) {
-      return <li role="separator" className="divider" />;
+      return <li role="separator" className={mapClassNames("divider")} />;
     }
 
     if (this.props.header) {
       return (
-        <li role="heading" className={headerClass}>{this.props.children}</li>
+        <li role="heading" className={mapClassNames(headerClass)}>{this.props.children}</li>
       );
     }
 
@@ -49,7 +50,7 @@ class MenuItem extends React.Component {
 
     return (
       <li role="presentation"
-        className={classnames(className, classes)}
+        className={classnames(className, mapClassNames(classes))}
         style={style}
       >
         <SafeAnchor

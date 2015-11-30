@@ -19,6 +19,7 @@ import DropdownToggle from './DropdownToggle';
 import createChainedFunction from './utils/createChainedFunction';
 import CustomPropTypes from './utils/CustomPropTypes';
 import ValidComponentChildren from './utils/ValidComponentChildren';
+import {mapClassNames} from './utils/classNameUtils';
 
 const TOGGLE_REF = 'toggle-btn';
 const TOGGLE_ROLE = DropdownToggle.defaultProps.bsRole;
@@ -102,7 +103,7 @@ class Dropdown extends React.Component {
       <Component
         {...props}
         tabIndex="-1"
-        className={classNames(this.props.className, rootClasses)}
+        className={classNames(this.props.className, mapClassNames(rootClasses))}
       >
         { children }
       </Component>

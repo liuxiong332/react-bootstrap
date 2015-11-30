@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import tbsUtils from './utils/bootstrapUtils';
 import isRequiredForA11y from 'react-prop-types/lib/isRequiredForA11y';
+import {mapClassNames} from './utils/classNameUtils';
 
 const Tooltip = React.createClass({
 
@@ -74,9 +75,9 @@ const Tooltip = React.createClass({
     };
 
     return (
-      <div role="tooltip" {...this.props} className={classNames(this.props.className, classes)} style={style}>
-        <div className={tbsUtils.prefix(this.props, 'arrow')} style={arrowStyle} />
-        <div className={tbsUtils.prefix(this.props, 'inner')}>
+      <div role="tooltip" {...this.props} className={classNames(this.props.className, mapClassNames(classes))} style={style}>
+        <div className={mapClassNames(tbsUtils.prefix(this.props, 'arrow'))} style={arrowStyle} />
+        <div className={mapClassNames(tbsUtils.prefix(this.props, 'inner'))}>
           {this.props.children}
         </div>
       </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import Transition from 'react-overlays/lib/Transition';
 import deprecated from 'react-prop-types/lib/deprecated';
+import {mapClassNames} from './utils/classNameUtils';
 
 class Fade extends React.Component {
   render() {
@@ -11,7 +12,7 @@ class Fade extends React.Component {
       <Transition
         {...this.props}
         timeout={timeout}
-        className={classNames(this.props.className, 'fade')}
+        className={classNames(this.props.className, mapClassNames('fade'))}
         enteredClassName="in"
         enteringClassName="in"
       >

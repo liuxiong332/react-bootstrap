@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import tbsUtils from './utils/bootstrapUtils';
 import TransitionEvents from './utils/TransitionEvents';
+import {mapClassNames} from './utils/classNameUtils';
 
 const Tab = React.createClass({
   propTypes: {
@@ -97,7 +98,7 @@ const Tab = React.createClass({
         title={undefined}
         role="tabpanel"
         aria-hidden={!this.props.active}
-        className={classNames(this.props.className, classes)}
+        className={classNames(this.props.className, mapClassNames(classes))}
       >
         {this.props.children}
       </div>

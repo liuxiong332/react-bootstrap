@@ -9,6 +9,7 @@ import keycode from 'keycode';
 import createChainedFunction from './utils/createChainedFunction';
 import tbsUtils from './utils/bootstrapUtils';
 import ValidComponentChildren from './utils/ValidComponentChildren';
+import {mapClassNames} from './utils/classNameUtils';
 
 let paneId = (props, child) => child.props.id ? child.props.id : props.id && (props.id + '___pane___' + child.props.eventKey);
 let tabId = (props, child) => child.props.id ? child.props.id + '___tab' : props.id && (props.id + '___tab___' + child.props.eventKey);
@@ -189,7 +190,7 @@ const Tabs = React.createClass({
     const childTabs = ValidComponentChildren.map(children, this.renderTab);
 
     const panesProps = {
-      className: tbsUtils.prefix(this.props, 'content'),
+      className: mapClassNames(tbsUtils.prefix(this.props, 'content')),
       ref: 'panes'
     };
     const childPanes = ValidComponentChildren.map(children, this.renderPane);
@@ -197,7 +198,7 @@ const Tabs = React.createClass({
     if (isHorizontal) {
       if (!standalone) {
         containerProps.className =
-          classNames(containerProps.className, 'clearfix');
+          classNames(containerProps.className, mapClassNames('clearfix'));
       }
 
       const {tabsColProps, panesColProps} =

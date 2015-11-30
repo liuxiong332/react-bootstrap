@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import {mapClassNames} from './utils/classNameUtils';
 
 const Glyphicon = React.createClass({
   propTypes: {
@@ -27,11 +28,11 @@ const Glyphicon = React.createClass({
   },
 
   render() {
-    let className = classNames(this.props.className, {
+    let className = classNames(this.props.className, mapClassNames({
       [this.props.bsClass]: true,
       ['glyphicon-' + this.props.glyph]: true,
       ['form-control-feedback']: this.props.formControlFeedback
-    });
+    }));
 
     return (
       <span {...this.props} className={className}>

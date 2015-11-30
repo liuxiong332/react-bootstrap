@@ -4,6 +4,7 @@ import bootstrapUtils, { bsStyles, bsClass } from './utils/bootstrapUtils';
 import { State } from './styleMaps';
 import classNames from 'classnames';
 import ValidComponentChildren from './utils/ValidComponentChildren';
+import {mapClassNames} from './utils/classNameUtils';
 
 /**
  * Custom propTypes checker
@@ -46,7 +47,7 @@ class ProgressBar extends React.Component {
     return (
       <div
         {...this.props}
-        className={classNames(this.props.className, 'progress')}
+        className={classNames(this.props.className, mapClassNames('progress'))}
         min={null}
         max={null}
         label={null}
@@ -77,16 +78,16 @@ class ProgressBar extends React.Component {
 
     if (this.props.srOnly) {
       label = (
-        <span className="sr-only">
+        <span className={mapClassNames("sr-only")}>
           {label}
         </span>
       );
     }
 
-    const classes = classNames(className, bootstrapUtils.getClassSet(this.props), {
+    const classes = classNames(className, mapClassNames(bootstrapUtils.getClassSet(this.props)), mapClassNames({
       active: this.props.active,
       [bootstrapUtils.prefix(this.props, 'striped')]: this.props.active || this.props.striped
-    });
+    }));
 
     return (
       <div

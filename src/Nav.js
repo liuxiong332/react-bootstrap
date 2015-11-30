@@ -6,6 +6,7 @@ import tbsUtils, { bsStyles, bsClass as _bsClass } from './utils/bootstrapUtils'
 
 import ValidComponentChildren from './utils/ValidComponentChildren';
 import createChainedFunction from './utils/createChainedFunction';
+import {mapClassNames} from './utils/classNameUtils';
 
 import Collapse from './Collapse';
 
@@ -36,7 +37,7 @@ class Nav extends React.Component {
         {...this.props}
         id={ulId || id}
         role={this.props.bsStyle === 'tabs' ? 'tablist' : null}
-        className={classNames(className, ulClassName, classes)}
+        className={classNames(className, ulClassName, mapClassNames(classes))}
       >
         {ValidComponentChildren.map(this.props.children, this.renderNavItem, this)}
       </ul>
@@ -47,7 +48,7 @@ class Nav extends React.Component {
       list = (
         <Collapse
           in={this.props.expanded}
-          className={isNavbar ? 'navbar-collapse' : void 0}
+          className={isNavbar ? mapClassNames('navbar-collapse') : void 0}
         >
           <div>
             { list }

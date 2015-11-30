@@ -2,6 +2,7 @@ import React from 'react';
 import classSet from 'classnames';
 import SafeAnchor from './SafeAnchor';
 import bootstrapUtils, { bsClass } from './utils/bootstrapUtils';
+import {mapClassNames} from './utils/classNameUtils';
 
 const Thumbnail = React.createClass({
 
@@ -12,7 +13,7 @@ const Thumbnail = React.createClass({
   },
 
   render() {
-    let classes = bootstrapUtils.getClassSet(this.props);
+    let classes = mapClassNames(bootstrapUtils.getClassSet(this.props));
 
     if (this.props.href) {
       return (

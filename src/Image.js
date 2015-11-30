@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import {mapClassNames} from './utils/classNameUtils';
 
 const Image = React.createClass({
 
@@ -44,7 +45,7 @@ const Image = React.createClass({
     };
 
     return (
-      <img {...this.props} className={classNames(this.props.className, classes)} />
+      <img {...this.props} className={classNames(this.props.className, mapClassNames(classes))} />
     );
   }
 });

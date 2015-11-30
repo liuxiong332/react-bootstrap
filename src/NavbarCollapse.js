@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import tbsUtils from './utils/bootstrapUtils';
 import Collapse from './Collapse';
+import {mapClassNames} from './utils/classNameUtils';
 
 let NavbarCollapse = React.createClass({
 
@@ -18,7 +19,7 @@ let NavbarCollapse = React.createClass({
 
     return (
       <Collapse in={expanded} {...props}>
-        <div className={tbsUtils.prefix({ bsClass }, 'collapse')}>
+        <div className={mapClassNames(tbsUtils.prefix({ bsClass }, 'collapse'))}>
           { children }
         </div>
       </Collapse>

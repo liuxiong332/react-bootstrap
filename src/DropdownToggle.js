@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import Button from './Button';
 import SafeAnchor from './SafeAnchor';
+import {mapClassNames} from './utils/classNameUtils';
 
 const CARET = <span> <span className="caret" /></span>;
 
@@ -18,7 +19,7 @@ export default class DropdownToggle extends React.Component {
     return (
       <Component
         {...this.props}
-        className={classNames(classes, this.props.className)}
+        className={classNames(mapClassNames(classes), this.props.className)}
         type="button"
         aria-haspopup
         aria-expanded={this.props.open}>

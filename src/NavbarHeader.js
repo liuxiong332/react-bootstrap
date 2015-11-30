@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import tbsUtils from './utils/bootstrapUtils';
+import {mapClassNames} from './utils/classNameUtils';
 
 let NavbarHeader = React.createClass({
 
@@ -14,7 +15,7 @@ let NavbarHeader = React.createClass({
     } = this.context;
 
     return (
-      <div className={tbsUtils.prefix({ bsClass }, 'header')}>
+      <div className={mapClassNames(tbsUtils.prefix({ bsClass }, 'header'))}>
         { children }
       </div>
     );

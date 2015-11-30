@@ -16,6 +16,7 @@ import NavbarCollapse from './NavbarCollapse';
 
 import tbsUtils, { bsClass as bsClasses, bsStyles } from './utils/bootstrapUtils';
 import { DEFAULT, INVERSE } from './styleMaps';
+import {mapClassNames} from './utils/classNameUtils';
 
 let has = (obj, key) => obj && {}.hasOwnProperty.call(obj, key);
 
@@ -163,7 +164,7 @@ let Navbar = React.createClass({
     classes[tbsUtils.prefix(this.props, 'static-top')] = staticTop;
 
     return (
-      <ComponentClass {...props} className={classNames(className, classes)}>
+      <ComponentClass {...props} className={classNames(className, mapClassNames(classes))}>
         <Grid fluid={fluid}>
           { children }
         </Grid>
@@ -186,10 +187,10 @@ function createSimpleWrapper(tag, suffix, displayName) {
     { $bs_navbar_bsClass: bsClass = 'navbar' }
   ) =>
     <Tag {...props}
-      className={classNames(className, tbsUtils.prefix({ bsClass }, suffix), {
+      className={classNames(className, mapClassNames(tbsUtils.prefix({ bsClass }, suffix)), mapClassNames({
         [tbsUtils.prefix({ bsClass }, 'right')]: props.pullRight,
         [tbsUtils.prefix({ bsClass }, 'left')]: props.pullLeft
-      })}
+      }))}
     />;
 
   wrapper.displayName = displayName;

@@ -3,6 +3,7 @@ import React from 'react';
 import classNames from 'classnames';
 import tbsUtils, { bsClass, bsSizes } from './utils/bootstrapUtils';
 import { Sizes } from './styleMaps';
+import {mapClassNames} from './utils/classNameUtils';
 
 const ModalDialog = React.createClass({
 
@@ -31,10 +32,10 @@ const ModalDialog = React.createClass({
         tabIndex="-1"
         role="dialog"
         style={modalStyle}
-        className={classNames(this.props.className, prefix)}
+        className={classNames(this.props.className, mapClassNames(prefix))}
       >
-        <div className={classNames(this.props.dialogClassName, dialogClasses)}>
-          <div className={tbsUtils.prefix(this.props, 'content')} role="document">
+        <div className={classNames(this.props.dialogClassName, mapClassNames(dialogClasses))}>
+          <div className={mapClassNames(tbsUtils.prefix(this.props, 'content'))} role="document">
             { this.props.children }
           </div>
         </div>

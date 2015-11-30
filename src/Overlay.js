@@ -6,6 +6,7 @@ import BaseOverlay from 'react-overlays/lib/Overlay';
 import elementType from 'react-prop-types/lib/elementType';
 import Fade from './Fade';
 import classNames from 'classnames';
+import {mapClassNames} from './utils/classNameUtils';
 
 class Overlay extends React.Component {
 
@@ -25,7 +26,7 @@ class Overlay extends React.Component {
 
     if (!transition) {
       child = cloneElement(child, {
-        className: classNames('in', child.props.className)
+        className: classNames(mapClassNames('in'), child.props.className)
       });
     }
 

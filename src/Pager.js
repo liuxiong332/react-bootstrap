@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 import ValidComponentChildren from './utils/ValidComponentChildren';
 import createChainedFunction from './utils/createChainedFunction';
+import {mapClassNames} from './utils/classNameUtils';
 
 const Pager = React.createClass({
 
@@ -14,7 +15,7 @@ const Pager = React.createClass({
     return (
       <ul
         {...this.props}
-        className={classNames(this.props.className, 'pager')}>
+        className={classNames(this.props.className, mapClassNames('pager'))}>
         {ValidComponentChildren.map(this.props.children, this.renderPageItem)}
       </ul>
     );

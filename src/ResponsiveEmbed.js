@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import React, { PropTypes, cloneElement } from 'react';
 
 import warning from 'warning';
+import {mapClassNames} from './utils/classNameUtils';
 
 class ResponsiveEmbed extends React.Component {
   render() {
@@ -15,10 +16,10 @@ class ResponsiveEmbed extends React.Component {
     };
 
     return (
-      <div className={classNames(bsClass, aspectRatio)}>
+      <div className={classNames(mapClassNames(bsClass), mapClassNames(aspectRatio))}>
         {cloneElement(children, {
           ...props,
-          className: classNames(className, 'embed-responsive-item')
+          className: classNames(className, mapClassNames('embed-responsive-item'))
         })}
       </div>
     );

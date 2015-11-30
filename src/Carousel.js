@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import ValidComponentChildren from './utils/ValidComponentChildren';
 import Glyphicon from './Glyphicon';
 import tbsUtils from './utils/bootstrapUtils';
+import {mapClassNames} from './utils/classNameUtils';
 
 const Carousel = React.createClass({
 
@@ -148,7 +149,7 @@ const Carousel = React.createClass({
     return (
       <div
         {...this.props}
-        className={classNames(this.props.className, classes)}
+        className={classNames(this.props.className, mapClassNames(classes))}
         onMouseOver={this.handleMouseOver}
         onMouseOut={this.handleMouseOut}>
         {

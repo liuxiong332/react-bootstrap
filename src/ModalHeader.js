@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import tbsUtils, { bsClass } from './utils/bootstrapUtils';
 import createChainedFunction from './utils/createChainedFunction';
+import {mapClassNames} from './utils/classNameUtils';
 
 class ModalHeader extends React.Component {
 
@@ -12,12 +13,12 @@ class ModalHeader extends React.Component {
     return (
       <div
         {...props}
-        className={classNames(this.props.className, tbsUtils.prefix(this.props, 'header'))}
+        className={classNames(this.props.className, mapClassNames(tbsUtils.prefix(this.props, 'header')))}
       >
         { this.props.closeButton &&
           <button
             type="button"
-            className="close"
+            className={mapClassNames("close")}
             aria-label={label}
             onClick={onHide}>
             <span aria-hidden="true">

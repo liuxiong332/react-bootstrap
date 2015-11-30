@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import SafeAnchor from './SafeAnchor';
 import createChainedFunction from './utils/createChainedFunction';
+import {mapClassNames} from './utils/classNameUtils';
 
 const NavItem = React.createClass({
 
@@ -61,7 +62,7 @@ const NavItem = React.createClass({
     }
 
     return (
-      <li {...props} role="presentation" className={classNames(props.className, classes)}>
+      <li {...props} role="presentation" className={classNames(props.className, mapClassNames(classes))}>
         <SafeAnchor {...linkProps} aria-controls={ariaControls}>
           { children }
         </SafeAnchor>

@@ -7,6 +7,7 @@ import bootstrapUtils from './utils/bootstrapUtils';
 import RootCloseWrapper from 'react-overlays/lib/RootCloseWrapper';
 import ValidComponentChildren from './utils/ValidComponentChildren';
 import createChainedFunction from './utils/createChainedFunction';
+import {mapClassNames} from './utils/classNameUtils';
 
 class DropdownMenu extends React.Component {
   constructor(props) {
@@ -101,7 +102,7 @@ class DropdownMenu extends React.Component {
 
     let list = (
       <ul
-        className={classNames(className, classes)}
+        className={classNames(className, mapClassNames(classes))}
         role="menu"
         aria-labelledby={labelledBy}
         {...props}

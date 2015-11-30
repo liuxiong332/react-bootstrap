@@ -5,6 +5,7 @@ import Transition from 'react-overlays/lib/Transition';
 import deprecated from 'react-prop-types/lib/deprecated';
 
 import createChainedFunction from './utils/createChainedFunction';
+import {mapClassNames} from './utils/classNameUtils';
 
 let capitalize = str => str[0].toUpperCase() + str.substr(1);
 
@@ -51,7 +52,7 @@ class Collapse extends React.Component {
         ref="transition"
         {...this.props}
         aria-expanded={this.props.role ? this.props.in : null}
-        className={classNames(this.props.className, { width: this._dimension() === 'width' })}
+        className={classNames(this.props.className, mapClassNames({ width: this._dimension() === 'width' }))}
         exitedClassName="collapse"
         exitingClassName="collapsing"
         enteredClassName="collapse in"

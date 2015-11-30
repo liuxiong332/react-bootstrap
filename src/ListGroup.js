@@ -2,6 +2,7 @@ import React, { cloneElement } from 'react';
 import ListGroupItem from './ListGroupItem';
 import classNames from 'classnames';
 import ValidComponentChildren from './utils/ValidComponentChildren';
+import {mapClassNames} from './utils/classNameUtils';
 
 class ListGroup extends React.Component {
   render() {
@@ -15,7 +16,7 @@ class ListGroup extends React.Component {
       return (
         <Component
           {...this.props}
-          className={classNames(this.props.className, 'list-group')}>
+          className={classNames(this.props.className, mapClassNames('list-group'))}>
           {items}
         </Component>
       );
@@ -60,7 +61,7 @@ class ListGroup extends React.Component {
     return (
       <ul
         {...this.props}
-        className={classNames(this.props.className, 'list-group')}>
+        className={classNames(this.props.className, mapClassNames('list-group'))}>
         {listItems}
       </ul>
     );
@@ -70,7 +71,7 @@ class ListGroup extends React.Component {
     return (
       <div
         {...this.props}
-        className={classNames(this.props.className, 'list-group')}>
+        className={classNames(this.props.className, mapClassNames('list-group'))}>
         {items}
       </div>
     );

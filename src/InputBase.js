@@ -3,6 +3,7 @@ import React from 'react';
 
 import FormGroup from './FormGroup';
 import Glyphicon from './Glyphicon';
+import {mapClassNames} from './utils/classNameUtils';
 
 class InputBase extends React.Component {
   getInputDOMNode() {
@@ -50,38 +51,38 @@ class InputBase extends React.Component {
 
   renderInputGroup(children) {
     let addonBefore = this.props.addonBefore ? (
-      <span className="input-group-addon" key="addonBefore">
+      <span className={mapClassNames("input-group-addon")} key="addonBefore">
         {this.props.addonBefore}
       </span>
     ) : null;
 
     let addonAfter = this.props.addonAfter ? (
-      <span className="input-group-addon" key="addonAfter">
+      <span className={mapClassNames("input-group-addon")} key="addonAfter">
         {this.props.addonAfter}
       </span>
     ) : null;
 
     let buttonBefore = this.props.buttonBefore ? (
-      <span className="input-group-btn">
+      <span className={mapClassNames("input-group-btn")}>
         {this.props.buttonBefore}
       </span>
     ) : null;
 
     let buttonAfter = this.props.buttonAfter ? (
-      <span className="input-group-btn">
+      <span className={mapClassNames("input-group-btn")}>
         {this.props.buttonAfter}
       </span>
     ) : null;
 
     let inputGroupClassName;
     switch (this.props.bsSize) {
-    case 'small': inputGroupClassName = 'input-group-sm'; break;
-    case 'large': inputGroupClassName = 'input-group-lg'; break;
+    case 'small': inputGroupClassName = mapClassNames('input-group-sm'); break;
+    case 'large': inputGroupClassName = mapClassNames('input-group-lg'); break;
     default:
     }
 
     return addonBefore || addonAfter || buttonBefore || buttonAfter ? (
-      <div className={classNames(inputGroupClassName, 'input-group')} key="input-group">
+      <div className={classNames(inputGroupClassName, mapClassNames('input-group'))} key="input-group">
         {addonBefore}
         {buttonBefore}
         {children}
@@ -110,7 +111,7 @@ class InputBase extends React.Component {
 
   renderHelp() {
     return this.props.help ? (
-      <span className="help-block" key="help">
+      <span className={mapClassNames("help-block")} key="help">
         {this.props.help}
       </span>
     ) : null;
@@ -123,7 +124,7 @@ class InputBase extends React.Component {
     };
 
     return (
-      <div className={classNames(classes)} key="checkboxRadioWrapper">
+      <div className={classNames(mapClassNames(classes))} key="checkboxRadioWrapper">
         {children}
       </div>
     );
@@ -131,7 +132,7 @@ class InputBase extends React.Component {
 
   renderWrapper(children) {
     return this.props.wrapperClassName ? (
-      <div className={this.props.wrapperClassName} key="wrapper">
+      <div className={mapClassNames(this.props.wrapperClassName)} key="wrapper">
         {children}
       </div>
     ) : children;
@@ -144,7 +145,7 @@ class InputBase extends React.Component {
     classes[this.props.labelClassName] = this.props.labelClassName;
 
     return this.props.label ? (
-      <label htmlFor={this.props.id} className={classNames(classes)} key="label">
+      <label htmlFor={this.props.id} className={classNames(mapClassNames(classes))} key="label">
         {children}
         {this.props.label}
       </label>
@@ -159,20 +160,20 @@ class InputBase extends React.Component {
     switch (this.props.type) {
     case 'select':
       return (
-        <select {...this.props} className={classNames(this.props.className, 'form-control')} ref="input" key="input">
+        <select {...this.props} className={classNames(this.props.className, mapClassNames('form-control'))} ref="input" key="input">
           {this.props.children}
         </select>
       );
     case 'textarea':
-      return <textarea {...this.props} className={classNames(this.props.className, 'form-control')} ref="input" key="input" />;
+      return <textarea {...this.props} className={classNames(this.props.className, mapClassNames('form-control'))} ref="input" key="input" />;
     case 'static':
       return (
-        <p {...this.props} className={classNames(this.props.className, 'form-control-static')} ref="input" key="input">
+        <p {...this.props} className={classNames(this.props.className, mapClassNames('form-control-static'))} ref="input" key="input">
           {this.props.value}
         </p>
       );
     default:
-      const className = this.isCheckboxOrRadio() || this.isFile() ? '' : 'form-control';
+      const className = this.isCheckboxOrRadio() || this.isFile() ? '' : mapClassNames('form-control');
       return <input {...this.props} className={classNames(this.props.className, className)} ref="input" key="input" />;
     }
   }

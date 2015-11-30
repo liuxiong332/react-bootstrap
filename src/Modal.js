@@ -22,6 +22,7 @@ import Footer from './ModalFooter';
 import BaseModal from 'react-overlays/lib/Modal';
 import isOverflowing from 'react-overlays/lib/utils/isOverflowing';
 import pick from 'lodash-compat/object/pick';
+import {mapClassNames} from './utils/classNameUtils';
 
 const Modal = React.createClass({
 
@@ -130,7 +131,7 @@ const Modal = React.createClass({
         ref={ref => this._modal = ref}
         {...props}
         style={modalStyles}
-        className={classNames(className, inClass)}
+        className={classNames(className, mapClassNames(inClass))}
         dialogClassName={dialogClassName}
         onClick={props.backdrop === true ? this.handleDialogClick : null}
       >
@@ -148,8 +149,8 @@ const Modal = React.createClass({
         }}
         onEntering={this._onShow}
         onExited={this._onHide}
-        backdropClassName={classNames(tbsUtils.prefix(props, 'backdrop'), inClass)}
-        containerClassName={tbsUtils.prefix(props, 'open')}
+        backdropClassName={classNames(mapClassNames(tbsUtils.prefix(props, 'backdrop')), mapClassNames(inClass))}
+        containerClassName={mapClassNames(tbsUtils.prefix(props, 'open'))}
         transition={animation ? Fade : undefined}
         dialogTransitionTimeout={Modal.TRANSITION_DURATION}
         backdropTransitionTimeout={Modal.BACKDROP_TRANSITION_DURATION}

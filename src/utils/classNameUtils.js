@@ -5,10 +5,11 @@ import styleManager from './styleManager';
 // This function will map the classNames to the destination class names by styles
 function _mapClassNames(styles, classNames) {
   let mapObj = {};
+  if(typeof classNames === 'string') {
+    return classNames in styles ? styles[classNames] : classNames;
+  }
   Object.keys(classNames).forEach(key => {
-    if(key in styles) {
-      mapObj[styles[key]] = classNames[key];
-    }
+    key in styles ? mapObj[styles[key]] = classNames[key] : mapObj[key] = classNames[key];
     warning(key in styles, `the key ${key} is not in classNames`);
   });
   return mapObj;

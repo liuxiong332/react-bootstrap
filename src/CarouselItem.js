@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 
 import TransitionEvents from './utils/TransitionEvents';
 import tbsUtils from './utils/bootstrapUtils';
+import {mapClassNames} from './utils/classNameUtils';
 
 const CarouselItem = React.createClass({
   propTypes: {
@@ -82,7 +83,7 @@ const CarouselItem = React.createClass({
     }
 
     return (
-      <div {...this.props} className={classNames(this.props.className, classes)}>
+      <div {...this.props} className={classNames(this.props.className, mapClassNames(classes))}>
         {this.props.children}
         {this.props.caption ? this.renderCaption() : null}
       </div>

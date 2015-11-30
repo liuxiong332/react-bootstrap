@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import {mapClassNames} from './utils/classNameUtils';
 
 class FormGroup extends React.Component {
   render() {
@@ -14,7 +15,7 @@ class FormGroup extends React.Component {
     };
 
     return (
-      <div className={classNames(classes, this.props.groupClassName)}>
+      <div className={classNames(mapClassNames(classes), this.props.groupClassName)}>
         {this.props.children}
       </div>
     );

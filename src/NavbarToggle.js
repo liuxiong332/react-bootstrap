@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import tbsUtils from './utils/bootstrapUtils';
+import {mapClassNames} from './utils/classNameUtils';
 
 let NavbarToggle = React.createClass({
 
@@ -25,13 +26,13 @@ let NavbarToggle = React.createClass({
     return (
       <button type="button"
         onClick={onToggle}
-        className={tbsUtils.prefix({ bsClass }, 'toggle')}
+        className={mapClassNames(tbsUtils.prefix({ bsClass }, 'toggle'))}
       >
         { children || [
-          <span className="sr-only" key={0}>Toggle navigation</span>,
-          <span className="icon-bar" key={1}></span>,
-          <span className="icon-bar" key={2}></span>,
-          <span className="icon-bar" key={3}></span>
+          <span className={mapClassNames("sr-only")} key={0}>Toggle navigation</span>,
+          <span className={mapClassNames("icon-bar")} key={1}></span>,
+          <span className={mapClassNames("icon-bar")} key={2}></span>,
+          <span className={mapClassNames("icon-bar")} key={3}></span>
         ]
         }
       </button>

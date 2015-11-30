@@ -1,6 +1,7 @@
 import React, { cloneElement } from 'react';
 import classNames from 'classnames';
 import ValidComponentChildren from './utils/ValidComponentChildren';
+import {mapClassNames} from './utils/classNameUtils';
 
 const Breadcrumb = React.createClass({
   propTypes: {
@@ -25,7 +26,7 @@ const Breadcrumb = React.createClass({
         {...props}
         role="navigation"
         aria-label="breadcrumbs"
-        className={classNames(className, this.props.bsClass)}>
+        className={classNames(className, mapClassNames(this.props.bsClass))}>
         {ValidComponentChildren.map(this.props.children, this.renderBreadcrumbItem)}
       </ol>
     );

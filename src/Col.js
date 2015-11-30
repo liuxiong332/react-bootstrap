@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import styleMaps from './styleMaps';
 import elementType from 'react-prop-types/lib/elementType';
+import {mapClassNames} from './utils/classNameUtils';
 
 const Col = React.createClass({
   propTypes: {
@@ -178,7 +179,7 @@ const Col = React.createClass({
     }, this);
 
     return (
-      <ComponentClass {...this.props} className={classNames(this.props.className, classes)}>
+      <ComponentClass {...this.props} className={classNames(this.props.className, mapClassNames(classes))}>
         {this.props.children}
       </ComponentClass>
     );

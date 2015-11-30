@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import bootstrapUtils from './utils/bootstrapUtils';
 import Button from './Button';
+import {mapClassNames} from './utils/classNameUtils';
 
 const ButtonToolbar = React.createClass({
 
@@ -22,7 +23,7 @@ const ButtonToolbar = React.createClass({
       <div
         {...this.props}
         role="toolbar"
-        className={classNames(this.props.className, classes)}>
+        className={classNames(this.props.className, mapClassNames(classes))}>
         {this.props.children}
       </div>
     );

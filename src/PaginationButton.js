@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import createSelectedEvent from './utils/createSelectedEvent';
 import elementType from 'react-prop-types/lib/elementType';
+import {mapClassNames} from './utils/classNameUtils';
 
 const PaginationButton = React.createClass({
 
@@ -52,7 +53,7 @@ const PaginationButton = React.createClass({
     let ButtonComponentClass = this.props.buttonComponentClass;
 
     return (
-      <li className={classNames(className, classes)}>
+      <li className={classNames(className, mapClassNames(classes))}>
         <ButtonComponentClass
           {...anchorProps}
           onClick={this.handleClick} />

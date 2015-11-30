@@ -3,6 +3,7 @@ import React from 'react';
 import warning from 'warning';
 
 import SafeAnchor from './SafeAnchor';
+import {mapClassNames} from './utils/classNameUtils';
 
 const BreadcrumbItem = React.createClass({
   propTypes: {
@@ -66,7 +67,7 @@ const BreadcrumbItem = React.createClass({
     };
 
     return (
-      <li id={id} className={classNames(className, { active })}>
+      <li id={id} className={classNames(className, mapClassNames({ active }))}>
         {
           active ?
             <span {...props}>

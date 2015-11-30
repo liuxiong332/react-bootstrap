@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import elementType from 'react-prop-types/lib/elementType';
+import {mapClassNames} from './utils/classNameUtils';
 
 const Grid = React.createClass({
   propTypes: {
@@ -30,7 +31,7 @@ const Grid = React.createClass({
     return (
       <ComponentClass
         {...this.props}
-        className={classNames(this.props.className, className)}>
+        className={classNames(this.props.className, mapClassNames(className))}>
         {this.props.children}
       </ComponentClass>
     );

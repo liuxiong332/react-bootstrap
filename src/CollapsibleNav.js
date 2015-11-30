@@ -5,6 +5,7 @@ import deprecationWarning from './utils/deprecationWarning';
 
 import ValidComponentChildren from './utils/ValidComponentChildren';
 import createChainedFunction from './utils/createChainedFunction';
+import {mapClassNames} from './utils/classNameUtils';
 
 let CollapsibleNav = React.createClass({
 
@@ -32,7 +33,7 @@ let CollapsibleNav = React.createClass({
     const renderChildren = this.props.collapsible ? this.renderCollapsibleNavChildren : this.renderChildren;
 
     let nav = (
-      <div eventKey={this.props.eventKey} className={classNames(this.props.className, classes)} >
+      <div eventKey={this.props.eventKey} className={classNames(this.props.className, mapClassNames(classes))} >
         {ValidComponentChildren.map(this.props.children, renderChildren)}
       </div>
     );

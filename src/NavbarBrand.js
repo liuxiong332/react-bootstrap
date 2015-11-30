@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import tbsUtils from './utils/bootstrapUtils';
+import {mapClassNames} from './utils/classNameUtils';
 
 class NavbarBrand extends React.Component {
 
@@ -12,13 +13,13 @@ class NavbarBrand extends React.Component {
     if (React.isValidElement(children)) {
       return React.cloneElement(children, {
         className: classNames(
-          children.props.className, className, brandClasses
+          children.props.className, className, mapClassNames(brandClasses)
         )
       });
     }
 
     return (
-      <span {...props} className={classNames(className, brandClasses)}>
+      <span {...props} className={classNames(className, mapClassNames(brandClasses))}>
         {children}
       </span>
     );

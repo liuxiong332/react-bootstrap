@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import bootstrapUtils, { bsStyles, bsClass } from './utils/bootstrapUtils';
 import { State, PRIMARY, DEFAULT } from './styleMaps';
 import Collapse from './Collapse';
+import {mapClassNames} from './utils/classNameUtils';
 
 let Panel = React.createClass({
 
@@ -60,7 +61,7 @@ let Panel = React.createClass({
     let {headerRole, panelRole, ...props} = this.props;
     return (
       <div {...props}
-        className={classNames(this.props.className, bootstrapUtils.getClassSet(this.props))}
+        className={classNames(this.props.className, mapClassNames(bootstrapUtils.getClassSet(this.props)))}
         id={this.props.collapsible ? null : this.props.id} onSelect={null}>
         {this.renderHeading(headerRole)}
         {this.props.collapsible ? this.renderCollapsibleBody(panelRole) : this.renderBody()}
@@ -71,7 +72,7 @@ let Panel = React.createClass({
 
   renderCollapsibleBody(panelRole) {
     let props = {
-      className: bootstrapUtils.prefix(this.props, 'collapse'),
+      className: mapClassNames(bootstrapUtils.prefix(this.props, 'collapse')),
       id: this.props.id,
       ref: 'panel',
       'aria-hidden': !this.isExpanded()
@@ -106,7 +107,7 @@ let Panel = React.createClass({
 
     function addPanelBody(children) {
       bodyElements.push(
-        <div className={bodyClass} {...getProps()}>
+        <div className={mapClassNames(bodyClass)} {...getProps()}>
           {children}
         </div>
       );
@@ -162,7 +163,7 @@ let Panel = React.createClass({
         this.renderCollapsibleTitle(header, headerRole) : header;
     } else {
       const className = classNames(
-        bootstrapUtils.prefix(this.props, 'title'), header.props.className
+        mapClassNames(bootstrapUtils.prefix(this.props, 'title')), header.props.className
       );
 
       if (this.props.collapsible) {
@@ -176,7 +177,7 @@ let Panel = React.createClass({
     }
 
     return (
-      <div className={bootstrapUtils.prefix(this.props, 'heading')}>
+      <div className={mapClassNames(bootstrapUtils.prefix(this.props, 'heading'))}>
         {header}
       </div>
     );
@@ -187,7 +188,7 @@ let Panel = React.createClass({
       <a
         href={'#' + (this.props.id || '')}
         aria-controls={this.props.collapsible ? this.props.id : null}
-        className={this.isExpanded() ? null : 'collapsed'}
+        className={this.isExpanded() ? null : mapClassNames('collapsed')}
         aria-expanded={this.isExpanded()}
         aria-selected={this.isExpanded()}
         onClick={this.handleSelect}
@@ -199,7 +200,7 @@ let Panel = React.createClass({
 
   renderCollapsibleTitle(header, headerRole) {
     return (
-      <h4 className={bootstrapUtils.prefix(this.props, 'title')} role="presentation">
+      <h4 className={mapClassNames(bootstrapUtils.prefix(this.props, 'title'))} role="presentation">
         {this.renderAnchor(header, headerRole)}
       </h4>
     );
@@ -211,7 +212,7 @@ let Panel = React.createClass({
     }
 
     return (
-      <div className={bootstrapUtils.prefix(this.props, 'footer')}>
+      <div className={mapClassNames(bootstrapUtils.prefix(this.props, 'footer'))}>
         {this.props.footer}
       </div>
     );

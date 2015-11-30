@@ -2,6 +2,7 @@ import React from 'react';
 import ValidComponentChildren from './utils/ValidComponentChildren';
 import classNames from 'classnames';
 import tbsUtils from './utils/bootstrapUtils';
+import {mapClassNames} from './utils/classNameUtils';
 
 const Badge = React.createClass({
   propTypes: {
@@ -30,7 +31,7 @@ const Badge = React.createClass({
     return (
       <span
         {...this.props}
-        className={classNames(this.props.className, classes)}>
+        className={classNames(this.props.className, mapClassNames(classes))}>
         {this.props.children}
       </span>
     );

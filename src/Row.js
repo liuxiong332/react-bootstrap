@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import elementType from 'react-prop-types/lib/elementType';
+import {mapClassNames} from './utils/classNameUtils';
 
 const Row = React.createClass({
   propTypes: {
@@ -20,7 +21,7 @@ const Row = React.createClass({
     let ComponentClass = this.props.componentClass;
 
     return (
-      <ComponentClass {...this.props} className={classNames(this.props.className, 'row')}>
+      <ComponentClass {...this.props} className={classNames(this.props.className, mapClassNames('row'))}>
         {this.props.children}
       </ComponentClass>
     );
